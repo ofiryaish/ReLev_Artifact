@@ -101,11 +101,12 @@ The current FPGA design and JNI adapter have the following fixed constraints:
 - exactly 128 guide records are required;
 - edit-distance thresholds are limited to 0 through 6;
 - only the first 20 symbols of each guide line are read by ReLev;
-- ReLev appends the fixed suffix `TGG` to each 20-symbol guide; and
+- ReLev appends `NGG` to each 20-symbol guide, with `N` matched as a wildcard
+  by the FPGA automaton; and
 - the JNI library and `.xclbin` paths supplied to Java must be absolute.
 
-Supporting fewer guide lanes, another PAM encoding, or a different FPGA device
-requires corresponding ReLev host/kernel changes and a new bitstream.
+Supporting fewer guide lanes, another PAM, or a different FPGA device requires
+corresponding ReLev host/kernel changes and a new bitstream.
 
 ## Run from AutoFFinder
 
