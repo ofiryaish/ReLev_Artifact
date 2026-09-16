@@ -444,6 +444,7 @@ void automata_0::step(uint8_t input, ap_uint<1> &result, uint8_t pattern_id)
 	// State Logic
 	ap_uint<1> input_is_dna =
 		(input_r == 'A') || (input_r == 'C') || (input_r == 'G') || (input_r == 'T');
+	ap_uint<1> input_is_sequence_symbol = input_is_dna || (input_r == 'N');
 	ap_uint<1> ste_0_match_1_0 = (lev_distance[0]) &&  (ste_0_match_1_0_enable) && (input_is_dna && ((input_r == symbolset[0]) || (symbolset[0] == 'N')));
 	ap_uint<1> ste_0_match_1_1 = (lev_distance[1]) &&  (ste_0_match_1_1_enable) && (input_is_dna && ((input_r == symbolset[0]) || (symbolset[0] == 'N')));
 	ap_uint<1> ste_0_match_1_2 = (lev_distance[2]) &&  (ste_0_match_1_2_enable) && (input_is_dna && ((input_r == symbolset[0]) || (symbolset[0] == 'N')));
@@ -585,13 +586,13 @@ void automata_0::step(uint8_t input, ap_uint<1> &result, uint8_t pattern_id)
 	ap_uint<1> ste_0_match_20_5 = (lev_distance[5]) &&  (ste_0_match_20_5_enable) && (input_is_dna && ((input_r == symbolset[19]) || (symbolset[19] == 'N')));
 	ap_uint<1> ste_0_match_20_6 = (lev_distance[6]) &&  (ste_0_match_20_6_enable) && (input_is_dna && ((input_r == symbolset[19]) || (symbolset[19] == 'N')));
 
-	ap_uint<1> ste_0_match_21_0 = (lev_distance[0]) &&  (ste_0_match_21_0_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_1 = (lev_distance[1]) &&  (ste_0_match_21_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_2 = (lev_distance[2]) &&  (ste_0_match_21_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_3 = (lev_distance[3]) &&  (ste_0_match_21_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_4 = (lev_distance[4]) &&  (ste_0_match_21_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_5 = (lev_distance[5]) &&  (ste_0_match_21_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
-	ap_uint<1> ste_0_match_21_6 = (lev_distance[6]) &&  (ste_0_match_21_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));	// N
+	ap_uint<1> ste_0_match_21_0 = (lev_distance[0]) &&  (ste_0_match_21_0_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_1 = (lev_distance[1]) &&  (ste_0_match_21_1_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_2 = (lev_distance[2]) &&  (ste_0_match_21_2_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_3 = (lev_distance[3]) &&  (ste_0_match_21_3_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_4 = (lev_distance[4]) &&  (ste_0_match_21_4_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_5 = (lev_distance[5]) &&  (ste_0_match_21_5_enable) && input_is_sequence_symbol;	// N
+	ap_uint<1> ste_0_match_21_6 = (lev_distance[6]) &&  (ste_0_match_21_6_enable) && input_is_sequence_symbol;	// N
 
 	ap_uint<1> ste_0_match_22_0 = (lev_distance[0]) &&  (ste_0_match_22_0_enable) && ((input_r == 71)); //symbolset[21]));	G
 	ap_uint<1> ste_0_match_22_1 = (lev_distance[1]) &&  (ste_0_match_22_1_enable) && ((input_r == 71)); //symbolset[21]));	G
@@ -610,293 +611,293 @@ void automata_0::step(uint8_t input, ap_uint<1> &result, uint8_t pattern_id)
 	ap_uint<1> ste_0_match_23_6 = (lev_distance[6]) &&  (ste_0_match_23_6_enable) && ((input_r == 71)); //symbolset[22]));	G
 
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_0_1 = (lev_distance[1]) &&  (ste_0_mismatch_0_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_1 = (lev_distance[1]) &&  (ste_0_mismatch_0_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_0_2 = (lev_distance[2]) &&  (ste_0_mismatch_0_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_2 = (lev_distance[2]) &&  (ste_0_mismatch_0_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_0_3 = (lev_distance[3]) &&  (ste_0_mismatch_0_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_3 = (lev_distance[3]) &&  (ste_0_mismatch_0_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_0_4 = (lev_distance[4]) &&  (ste_0_mismatch_0_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_4 = (lev_distance[4]) &&  (ste_0_mismatch_0_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_0_5 = (lev_distance[5]) &&  (ste_0_mismatch_0_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_5 = (lev_distance[5]) &&  (ste_0_mismatch_0_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_0_6 = (lev_distance[6]) &&  (ste_0_mismatch_0_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_0_6 = (lev_distance[6]) &&  (ste_0_mismatch_0_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_2_1 = (lev_distance[1]) &&  (ste_0_mismatch_2_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_1 = (lev_distance[1]) &&  (ste_0_mismatch_2_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_2_2 = (lev_distance[2]) &&  (ste_0_mismatch_2_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_2 = (lev_distance[2]) &&  (ste_0_mismatch_2_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_2_3 = (lev_distance[3]) &&  (ste_0_mismatch_2_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_3 = (lev_distance[3]) &&  (ste_0_mismatch_2_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_2_4 = (lev_distance[4]) &&  (ste_0_mismatch_2_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_4 = (lev_distance[4]) &&  (ste_0_mismatch_2_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_2_5 = (lev_distance[5]) &&  (ste_0_mismatch_2_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_5 = (lev_distance[5]) &&  (ste_0_mismatch_2_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_2_6 = (lev_distance[6]) &&  (ste_0_mismatch_2_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_2_6 = (lev_distance[6]) &&  (ste_0_mismatch_2_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_3_1 = (lev_distance[1]) &&  (ste_0_mismatch_3_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_1 = (lev_distance[1]) &&  (ste_0_mismatch_3_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_3_2 = (lev_distance[2]) &&  (ste_0_mismatch_3_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_2 = (lev_distance[2]) &&  (ste_0_mismatch_3_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_3_3 = (lev_distance[3]) &&  (ste_0_mismatch_3_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_3 = (lev_distance[3]) &&  (ste_0_mismatch_3_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_3_4 = (lev_distance[4]) &&  (ste_0_mismatch_3_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_4 = (lev_distance[4]) &&  (ste_0_mismatch_3_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_3_5 = (lev_distance[5]) &&  (ste_0_mismatch_3_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_5 = (lev_distance[5]) &&  (ste_0_mismatch_3_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_3_6 = (lev_distance[6]) &&  (ste_0_mismatch_3_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_3_6 = (lev_distance[6]) &&  (ste_0_mismatch_3_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_4_1 = (lev_distance[1]) &&  (ste_0_mismatch_4_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_1 = (lev_distance[1]) &&  (ste_0_mismatch_4_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_4_2 = (lev_distance[2]) &&  (ste_0_mismatch_4_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_2 = (lev_distance[2]) &&  (ste_0_mismatch_4_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_4_3 = (lev_distance[3]) &&  (ste_0_mismatch_4_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_3 = (lev_distance[3]) &&  (ste_0_mismatch_4_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_4_4 = (lev_distance[4]) &&  (ste_0_mismatch_4_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_4 = (lev_distance[4]) &&  (ste_0_mismatch_4_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_4_5 = (lev_distance[5]) &&  (ste_0_mismatch_4_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_5 = (lev_distance[5]) &&  (ste_0_mismatch_4_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_4_6 = (lev_distance[6]) &&  (ste_0_mismatch_4_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_4_6 = (lev_distance[6]) &&  (ste_0_mismatch_4_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_5_1 = (lev_distance[1]) &&  (ste_0_mismatch_5_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_1 = (lev_distance[1]) &&  (ste_0_mismatch_5_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_5_2 = (lev_distance[2]) &&  (ste_0_mismatch_5_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_2 = (lev_distance[2]) &&  (ste_0_mismatch_5_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_5_3 = (lev_distance[3]) &&  (ste_0_mismatch_5_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_3 = (lev_distance[3]) &&  (ste_0_mismatch_5_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_5_4 = (lev_distance[4]) &&  (ste_0_mismatch_5_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_4 = (lev_distance[4]) &&  (ste_0_mismatch_5_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_5_5 = (lev_distance[5]) &&  (ste_0_mismatch_5_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_5 = (lev_distance[5]) &&  (ste_0_mismatch_5_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_5_6 = (lev_distance[6]) &&  (ste_0_mismatch_5_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_5_6 = (lev_distance[6]) &&  (ste_0_mismatch_5_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_6_1 = (lev_distance[1]) &&  (ste_0_mismatch_6_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_1 = (lev_distance[1]) &&  (ste_0_mismatch_6_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_6_2 = (lev_distance[2]) &&  (ste_0_mismatch_6_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_2 = (lev_distance[2]) &&  (ste_0_mismatch_6_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_6_3 = (lev_distance[3]) &&  (ste_0_mismatch_6_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_3 = (lev_distance[3]) &&  (ste_0_mismatch_6_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_6_4 = (lev_distance[4]) &&  (ste_0_mismatch_6_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_4 = (lev_distance[4]) &&  (ste_0_mismatch_6_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_6_5 = (lev_distance[5]) &&  (ste_0_mismatch_6_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_5 = (lev_distance[5]) &&  (ste_0_mismatch_6_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_6_6 = (lev_distance[6]) &&  (ste_0_mismatch_6_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_6_6 = (lev_distance[6]) &&  (ste_0_mismatch_6_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_7_1 = (lev_distance[1]) &&  (ste_0_mismatch_7_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_1 = (lev_distance[1]) &&  (ste_0_mismatch_7_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_7_2 = (lev_distance[2]) &&  (ste_0_mismatch_7_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_2 = (lev_distance[2]) &&  (ste_0_mismatch_7_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_7_3 = (lev_distance[3]) &&  (ste_0_mismatch_7_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_3 = (lev_distance[3]) &&  (ste_0_mismatch_7_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_7_4 = (lev_distance[4]) &&  (ste_0_mismatch_7_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_4 = (lev_distance[4]) &&  (ste_0_mismatch_7_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_7_5 = (lev_distance[5]) &&  (ste_0_mismatch_7_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_5 = (lev_distance[5]) &&  (ste_0_mismatch_7_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_7_6 = (lev_distance[6]) &&  (ste_0_mismatch_7_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_7_6 = (lev_distance[6]) &&  (ste_0_mismatch_7_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_8_1 = (lev_distance[1]) &&  (ste_0_mismatch_8_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_1 = (lev_distance[1]) &&  (ste_0_mismatch_8_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_8_2 = (lev_distance[2]) &&  (ste_0_mismatch_8_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_2 = (lev_distance[2]) &&  (ste_0_mismatch_8_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_8_3 = (lev_distance[3]) &&  (ste_0_mismatch_8_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_3 = (lev_distance[3]) &&  (ste_0_mismatch_8_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_8_4 = (lev_distance[4]) &&  (ste_0_mismatch_8_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_4 = (lev_distance[4]) &&  (ste_0_mismatch_8_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_8_5 = (lev_distance[5]) &&  (ste_0_mismatch_8_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_5 = (lev_distance[5]) &&  (ste_0_mismatch_8_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_8_6 = (lev_distance[6]) &&  (ste_0_mismatch_8_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_8_6 = (lev_distance[6]) &&  (ste_0_mismatch_8_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_9_1 = (lev_distance[1]) &&  (ste_0_mismatch_9_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_1 = (lev_distance[1]) &&  (ste_0_mismatch_9_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_9_2 = (lev_distance[2]) &&  (ste_0_mismatch_9_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_2 = (lev_distance[2]) &&  (ste_0_mismatch_9_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_9_3 = (lev_distance[3]) &&  (ste_0_mismatch_9_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_3 = (lev_distance[3]) &&  (ste_0_mismatch_9_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_9_4 = (lev_distance[4]) &&  (ste_0_mismatch_9_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_4 = (lev_distance[4]) &&  (ste_0_mismatch_9_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_9_5 = (lev_distance[5]) &&  (ste_0_mismatch_9_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_5 = (lev_distance[5]) &&  (ste_0_mismatch_9_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_9_6 = (lev_distance[6]) &&  (ste_0_mismatch_9_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_9_6 = (lev_distance[6]) &&  (ste_0_mismatch_9_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_10_1 = (lev_distance[1]) &&  (ste_0_mismatch_10_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_1 = (lev_distance[1]) &&  (ste_0_mismatch_10_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_10_2 = (lev_distance[2]) &&  (ste_0_mismatch_10_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_2 = (lev_distance[2]) &&  (ste_0_mismatch_10_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_10_3 = (lev_distance[3]) &&  (ste_0_mismatch_10_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_3 = (lev_distance[3]) &&  (ste_0_mismatch_10_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_10_4 = (lev_distance[4]) &&  (ste_0_mismatch_10_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_4 = (lev_distance[4]) &&  (ste_0_mismatch_10_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_10_5 = (lev_distance[5]) &&  (ste_0_mismatch_10_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_5 = (lev_distance[5]) &&  (ste_0_mismatch_10_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_10_6 = (lev_distance[6]) &&  (ste_0_mismatch_10_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_10_6 = (lev_distance[6]) &&  (ste_0_mismatch_10_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_11_1 = (lev_distance[1]) &&  (ste_0_mismatch_11_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_1 = (lev_distance[1]) &&  (ste_0_mismatch_11_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_11_2 = (lev_distance[2]) &&  (ste_0_mismatch_11_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_2 = (lev_distance[2]) &&  (ste_0_mismatch_11_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_11_3 = (lev_distance[3]) &&  (ste_0_mismatch_11_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_3 = (lev_distance[3]) &&  (ste_0_mismatch_11_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_11_4 = (lev_distance[4]) &&  (ste_0_mismatch_11_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_4 = (lev_distance[4]) &&  (ste_0_mismatch_11_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_11_5 = (lev_distance[5]) &&  (ste_0_mismatch_11_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_5 = (lev_distance[5]) &&  (ste_0_mismatch_11_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_11_6 = (lev_distance[6]) &&  (ste_0_mismatch_11_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_11_6 = (lev_distance[6]) &&  (ste_0_mismatch_11_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_12_1 = (lev_distance[1]) &&  (ste_0_mismatch_12_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_1 = (lev_distance[1]) &&  (ste_0_mismatch_12_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_12_2 = (lev_distance[2]) &&  (ste_0_mismatch_12_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_2 = (lev_distance[2]) &&  (ste_0_mismatch_12_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_12_3 = (lev_distance[3]) &&  (ste_0_mismatch_12_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_3 = (lev_distance[3]) &&  (ste_0_mismatch_12_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_12_4 = (lev_distance[4]) &&  (ste_0_mismatch_12_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_4 = (lev_distance[4]) &&  (ste_0_mismatch_12_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_12_5 = (lev_distance[5]) &&  (ste_0_mismatch_12_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_5 = (lev_distance[5]) &&  (ste_0_mismatch_12_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_12_6 = (lev_distance[6]) &&  (ste_0_mismatch_12_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_12_6 = (lev_distance[6]) &&  (ste_0_mismatch_12_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_13_1 = (lev_distance[1]) &&  (ste_0_mismatch_13_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_1 = (lev_distance[1]) &&  (ste_0_mismatch_13_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_13_2 = (lev_distance[2]) &&  (ste_0_mismatch_13_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_2 = (lev_distance[2]) &&  (ste_0_mismatch_13_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_13_3 = (lev_distance[3]) &&  (ste_0_mismatch_13_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_3 = (lev_distance[3]) &&  (ste_0_mismatch_13_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_13_4 = (lev_distance[4]) &&  (ste_0_mismatch_13_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_4 = (lev_distance[4]) &&  (ste_0_mismatch_13_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_13_5 = (lev_distance[5]) &&  (ste_0_mismatch_13_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_5 = (lev_distance[5]) &&  (ste_0_mismatch_13_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_13_6 = (lev_distance[6]) &&  (ste_0_mismatch_13_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_13_6 = (lev_distance[6]) &&  (ste_0_mismatch_13_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_14_1 = (lev_distance[1]) &&  (ste_0_mismatch_14_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_1 = (lev_distance[1]) &&  (ste_0_mismatch_14_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_14_2 = (lev_distance[2]) &&  (ste_0_mismatch_14_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_2 = (lev_distance[2]) &&  (ste_0_mismatch_14_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_14_3 = (lev_distance[3]) &&  (ste_0_mismatch_14_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_3 = (lev_distance[3]) &&  (ste_0_mismatch_14_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_14_4 = (lev_distance[4]) &&  (ste_0_mismatch_14_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_4 = (lev_distance[4]) &&  (ste_0_mismatch_14_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_14_5 = (lev_distance[5]) &&  (ste_0_mismatch_14_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_5 = (lev_distance[5]) &&  (ste_0_mismatch_14_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_14_6 = (lev_distance[6]) &&  (ste_0_mismatch_14_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_14_6 = (lev_distance[6]) &&  (ste_0_mismatch_14_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_15_1 = (lev_distance[1]) &&  (ste_0_mismatch_15_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_1 = (lev_distance[1]) &&  (ste_0_mismatch_15_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_15_2 = (lev_distance[2]) &&  (ste_0_mismatch_15_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_2 = (lev_distance[2]) &&  (ste_0_mismatch_15_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_15_3 = (lev_distance[3]) &&  (ste_0_mismatch_15_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_3 = (lev_distance[3]) &&  (ste_0_mismatch_15_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_15_4 = (lev_distance[4]) &&  (ste_0_mismatch_15_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_4 = (lev_distance[4]) &&  (ste_0_mismatch_15_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_15_5 = (lev_distance[5]) &&  (ste_0_mismatch_15_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_5 = (lev_distance[5]) &&  (ste_0_mismatch_15_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_15_6 = (lev_distance[6]) &&  (ste_0_mismatch_15_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_15_6 = (lev_distance[6]) &&  (ste_0_mismatch_15_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_16_1 = (lev_distance[1]) &&  (ste_0_mismatch_16_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_1 = (lev_distance[1]) &&  (ste_0_mismatch_16_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_16_2 = (lev_distance[2]) &&  (ste_0_mismatch_16_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_2 = (lev_distance[2]) &&  (ste_0_mismatch_16_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_16_3 = (lev_distance[3]) &&  (ste_0_mismatch_16_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_3 = (lev_distance[3]) &&  (ste_0_mismatch_16_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_16_4 = (lev_distance[4]) &&  (ste_0_mismatch_16_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_4 = (lev_distance[4]) &&  (ste_0_mismatch_16_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_16_5 = (lev_distance[5]) &&  (ste_0_mismatch_16_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_5 = (lev_distance[5]) &&  (ste_0_mismatch_16_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_16_6 = (lev_distance[6]) &&  (ste_0_mismatch_16_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_16_6 = (lev_distance[6]) &&  (ste_0_mismatch_16_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_17_1 = (lev_distance[1]) &&  (ste_0_mismatch_17_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_1 = (lev_distance[1]) &&  (ste_0_mismatch_17_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_17_2 = (lev_distance[2]) &&  (ste_0_mismatch_17_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_2 = (lev_distance[2]) &&  (ste_0_mismatch_17_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_17_3 = (lev_distance[3]) &&  (ste_0_mismatch_17_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_3 = (lev_distance[3]) &&  (ste_0_mismatch_17_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_17_4 = (lev_distance[4]) &&  (ste_0_mismatch_17_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_4 = (lev_distance[4]) &&  (ste_0_mismatch_17_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_17_5 = (lev_distance[5]) &&  (ste_0_mismatch_17_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_5 = (lev_distance[5]) &&  (ste_0_mismatch_17_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_17_6 = (lev_distance[6]) &&  (ste_0_mismatch_17_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_17_6 = (lev_distance[6]) &&  (ste_0_mismatch_17_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_18_1 = (lev_distance[1]) &&  (ste_0_mismatch_18_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_1 = (lev_distance[1]) &&  (ste_0_mismatch_18_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_18_2 = (lev_distance[2]) &&  (ste_0_mismatch_18_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_2 = (lev_distance[2]) &&  (ste_0_mismatch_18_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_18_3 = (lev_distance[3]) &&  (ste_0_mismatch_18_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_3 = (lev_distance[3]) &&  (ste_0_mismatch_18_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_18_4 = (lev_distance[4]) &&  (ste_0_mismatch_18_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_4 = (lev_distance[4]) &&  (ste_0_mismatch_18_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_18_5 = (lev_distance[5]) &&  (ste_0_mismatch_18_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_5 = (lev_distance[5]) &&  (ste_0_mismatch_18_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_18_6 = (lev_distance[6]) &&  (ste_0_mismatch_18_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_18_6 = (lev_distance[6]) &&  (ste_0_mismatch_18_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_19_1 = (lev_distance[1]) &&  (ste_0_mismatch_19_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_1 = (lev_distance[1]) &&  (ste_0_mismatch_19_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_19_2 = (lev_distance[2]) &&  (ste_0_mismatch_19_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_2 = (lev_distance[2]) &&  (ste_0_mismatch_19_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_19_3 = (lev_distance[3]) &&  (ste_0_mismatch_19_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_3 = (lev_distance[3]) &&  (ste_0_mismatch_19_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_19_4 = (lev_distance[4]) &&  (ste_0_mismatch_19_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_4 = (lev_distance[4]) &&  (ste_0_mismatch_19_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_19_5 = (lev_distance[5]) &&  (ste_0_mismatch_19_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_5 = (lev_distance[5]) &&  (ste_0_mismatch_19_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_19_6 = (lev_distance[6] ) &&  (ste_0_mismatch_19_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_19_6 = (lev_distance[6] ) &&  (ste_0_mismatch_19_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_1_1 = (lev_distance[1]) &&  (ste_0_mismatch_1_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_1 = (lev_distance[1]) &&  (ste_0_mismatch_1_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_1_2 = (lev_distance[2]) &&  (ste_0_mismatch_1_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_2 = (lev_distance[2]) &&  (ste_0_mismatch_1_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_1_3 = (lev_distance[3]) &&  (ste_0_mismatch_1_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_3 = (lev_distance[3]) &&  (ste_0_mismatch_1_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_1_4 = (lev_distance[4]) &&  (ste_0_mismatch_1_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_4 = (lev_distance[4]) &&  (ste_0_mismatch_1_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_1_5 = (lev_distance[5]) &&  (ste_0_mismatch_1_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_5 = (lev_distance[5]) &&  (ste_0_mismatch_1_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_1_6 = (lev_distance[6]) &&  (ste_0_mismatch_1_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_1_6 = (lev_distance[6]) &&  (ste_0_mismatch_1_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_20_1 = (lev_distance[1]) &&  (ste_0_mismatch_20_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_1 = (lev_distance[1]) &&  (ste_0_mismatch_20_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_20_2 = (lev_distance[2]) &&  (ste_0_mismatch_20_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_2 = (lev_distance[2]) &&  (ste_0_mismatch_20_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_20_3 = (lev_distance[3]) &&  (ste_0_mismatch_20_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_3 = (lev_distance[3]) &&  (ste_0_mismatch_20_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_20_4 = (lev_distance[4]) &&  (ste_0_mismatch_20_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_4 = (lev_distance[4]) &&  (ste_0_mismatch_20_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_20_5 = (lev_distance[5]) &&  (ste_0_mismatch_20_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_5 = (lev_distance[5]) &&  (ste_0_mismatch_20_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_20_6 = (lev_distance[6]) &&  (ste_0_mismatch_20_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_20_6 = (lev_distance[6]) &&  (ste_0_mismatch_20_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_21_1 = (lev_distance[1]) &&  (ste_0_mismatch_21_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_1 = (lev_distance[1]) &&  (ste_0_mismatch_21_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_21_2 = (lev_distance[2]) &&  (ste_0_mismatch_21_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_2 = (lev_distance[2]) &&  (ste_0_mismatch_21_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_21_3 = (lev_distance[3]) &&  (ste_0_mismatch_21_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_3 = (lev_distance[3]) &&  (ste_0_mismatch_21_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_21_4 = (lev_distance[4]) &&  (ste_0_mismatch_21_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_4 = (lev_distance[4]) &&  (ste_0_mismatch_21_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_21_5 = (lev_distance[5]) &&  (ste_0_mismatch_21_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_5 = (lev_distance[5]) &&  (ste_0_mismatch_21_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_21_6 = (lev_distance[6]) &&  (ste_0_mismatch_21_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_21_6 = (lev_distance[6]) &&  (ste_0_mismatch_21_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_22_1 = (lev_distance[1]) &&  (ste_0_mismatch_22_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_1 = (lev_distance[1]) &&  (ste_0_mismatch_22_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_22_2 = (lev_distance[2]) &&  (ste_0_mismatch_22_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_2 = (lev_distance[2]) &&  (ste_0_mismatch_22_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_22_3 = (lev_distance[3]) &&  (ste_0_mismatch_22_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_3 = (lev_distance[3]) &&  (ste_0_mismatch_22_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_22_4 = (lev_distance[4]) &&  (ste_0_mismatch_22_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_4 = (lev_distance[4]) &&  (ste_0_mismatch_22_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_22_5 = (lev_distance[5]) &&  (ste_0_mismatch_22_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_5 = (lev_distance[5]) &&  (ste_0_mismatch_22_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_22_6 = (lev_distance[6]) &&  (ste_0_mismatch_22_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_22_6 = (lev_distance[6]) &&  (ste_0_mismatch_22_6_enable) && input_is_sequence_symbol;
 	// Edit distance: 1
-	ap_uint<1> ste_0_mismatch_23_1 = (lev_distance[1]) &&  (ste_0_mismatch_23_1_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_1 = (lev_distance[1]) &&  (ste_0_mismatch_23_1_enable) && input_is_sequence_symbol;
 	// Edit distance: 2
-	ap_uint<1> ste_0_mismatch_23_2 = (lev_distance[2]) &&  (ste_0_mismatch_23_2_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_2 = (lev_distance[2]) &&  (ste_0_mismatch_23_2_enable) && input_is_sequence_symbol;
 	// Edit distance: 3
-	ap_uint<1> ste_0_mismatch_23_3 = (lev_distance[3]) &&  (ste_0_mismatch_23_3_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_3 = (lev_distance[3]) &&  (ste_0_mismatch_23_3_enable) && input_is_sequence_symbol;
 	// Edit distance: 4
-	ap_uint<1> ste_0_mismatch_23_4 = (lev_distance[4]) &&  (ste_0_mismatch_23_4_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_4 = (lev_distance[4]) &&  (ste_0_mismatch_23_4_enable) && input_is_sequence_symbol;
 	// Edit distance: 5
-	ap_uint<1> ste_0_mismatch_23_5 = (lev_distance[5]) &&  (ste_0_mismatch_23_5_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_5 = (lev_distance[5]) &&  (ste_0_mismatch_23_5_enable) && input_is_sequence_symbol;
 	// Edit distance: 6
-	ap_uint<1> ste_0_mismatch_23_6 = (lev_distance[6]) &&  (ste_0_mismatch_23_6_enable) && (((input_r == 65) || (input_r == 67) || (input_r == 71) || (input_r == 84)));
+	ap_uint<1> ste_0_mismatch_23_6 = (lev_distance[6]) &&  (ste_0_mismatch_23_6_enable) && input_is_sequence_symbol;
 
 	// Edges
 	input_r = input;

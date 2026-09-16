@@ -105,10 +105,9 @@ The current FPGA design and JNI adapter have the following fixed constraints:
   by the FPGA automaton; and
 - the JNI library and `.xclbin` paths supplied to Java must be absolute.
 
-The PAM wildcard matches `A`, `C`, `G`, or `T`. An `N` in the reference genome
-does not satisfy the wildcard. In the current automaton, a reference `N` also
-does not activate a mismatch transition; it interrupts the active match path
-rather than consuming one edit.
+The PAM wildcard matches `A`, `C`, `G`, or `T`; a reference-genome `N` does not
+satisfy that wildcard. Elsewhere, a reference `N` activates the automaton's
+mismatch transitions and therefore consumes one edit.
 
 Supporting fewer guide lanes, another PAM, or a different FPGA device requires
 corresponding ReLev host/kernel changes and a new bitstream.
