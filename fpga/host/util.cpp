@@ -69,7 +69,7 @@ std::vector<unsigned char> file2CharVector(std::string fn) {
 }
 
 /**
- * This reads the 20-nt guide sequence and appends the SpCas9 NGG PAM.
+ * This reads valid CRISPR-style 24-byte patterns and sets last 3 to TGG
  */
 std::vector<std::vector<uint8_t>> read_patterns(std::string fn) {
     std::ifstream file(fn, std::ios::binary);
@@ -85,7 +85,7 @@ std::vector<std::vector<uint8_t>> read_patterns(std::string fn) {
         for(int i = 0; i < 20; i++) {
             tmp.push_back(pattern[i]);
         }
-        tmp.push_back('N');
+        tmp.push_back('T');
         tmp.push_back('G');
         tmp.push_back('G');
         vec.push_back(tmp);

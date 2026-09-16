@@ -51,8 +51,9 @@ files are U280-specific:
   banks.
 
 No prebuilt `.xclbin` is included on this branch. The kernel and bitstream must
-be built from source so that they contain the repeated-invocation reset and
-NGG wildcard support required by the JNI pipeline.
+be built from source so that they contain the repeated-invocation reset required
+by the JNI pipeline. The original ReLev automaton already implements the NGG
+PAM.
 
 Even another U280 installation may expose its platform under a different
 `.xpfm` path. Override `DEVICE` with the platform reported by `platforminfo`,
@@ -101,13 +102,13 @@ The current FPGA design and JNI adapter have the following fixed constraints:
 - exactly 128 guide records are required;
 - edit-distance thresholds are limited to 0 through 6;
 - only the first 20 symbols of each guide line are read by ReLev;
-- ReLev appends `NGG` to each 20-symbol guide, with `N` matched as a wildcard
-  by the FPGA automaton; and
+- the host stores a `TGG` suffix in the pattern buffer, but the FPGA automaton
+  independently hard-codes the PAM as `[ACGT]GG`; and
 - the JNI library and `.xclbin` paths supplied to Java must be absolute.
 
 The PAM wildcard matches `A`, `C`, `G`, or `T`; a reference-genome `N` does not
-satisfy that wildcard. Elsewhere, a reference `N` activates the automaton's
-mismatch transitions and therefore consumes one edit.
+satisfy that wildcard. The original automaton's mismatch predicates also accept
+only `A`, `C`, `G`, or `T`, so a reference `N` is not treated as a mismatch.
 
 Supporting fewer guide lanes, another PAM, or a different FPGA device requires
 corresponding ReLev host/kernel changes and a new bitstream.
