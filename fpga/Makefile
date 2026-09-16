@@ -47,8 +47,8 @@ $(AUTOMATA_XO): krnl_automata.cpp automata_single_file.cpp
 	$(RM) $@
 	$(VPP) $(VPP_OPTS) -c --hls.clock 500000000:krnl_automata -k krnl_automata -I'$(<D)' -o $@ $+
 
-$(XCLBIN): #$(AUTOMATA_XO)
-	$(VPP) $(VPP_OPTS) $(VPP_LINK_OPTS) -l -o $@ $(AUTOMATA_XO) $+ 
+$(XCLBIN): $(AUTOMATA_XO)
+	$(VPP) $(VPP_OPTS) $(VPP_LINK_OPTS) -l -o $@ $+
 
 # host rules
 $(HOST_EXE): ./host/host.cpp ./host/util.cpp

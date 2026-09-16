@@ -40,17 +40,76 @@ resets the kernel's persistent position and configuration counters at the
 start of every invocation, allowing one loaded system to process successive
 chromosome and strand files.
 
-Build the shared library after configuring the XRT, Vitis, and Java
-environments:
+## Hardware-specific requirements
+
+The included FPGA design targets the **AMD Alveo U280**. Both of the following
+files are U280-specific:
+
+- `fpga/Makefile` selects the
+  `xilinx_u280_gen3x16_xdma_1_202211_1` platform.
+- `fpga/HBM_connectivity.cfg` connects the input and output ports to U280 HBM
+  banks.
+
+The checked-in `automata.hw.xclbin` predates the repeated-invocation counter
+reset on this branch and must not be used for the JNI pipeline. Rebuild the
+kernel and bitstream from source.
+
+Even another U280 installation may expose its platform under a different
+`.xpfm` path. Override `DEVICE` with the platform reported by `platforminfo`,
+for example:
+
+```bash
+make DEVICE=/opt/xilinx/platforms/<installed-u280-platform>/<platform>.xpfm \
+  automata xclbin
+```
+
+A non-U280 card cannot use the included bitstream or HBM mapping unchanged.
+Its platform path and `HBM_connectivity.cfg` memory-bank assignments must be
+adapted before rebuilding. A CPU connected to an arbitrary FPGA is therefore
+not sufficient.
+
+The JNI runner currently opens XRT device index `0`. If the U280 is exposed
+under another XRT device index, update `fpga/host/relev_jni.cpp` and rebuild the
+JNI library.
+
+## Required rebuild
+
+Load the Vitis and XRT environments for the installed U280 platform, then
+build all three integration artifacts:
 
 ```bash
 export JAVA_HOME=/path/to/jdk
 cd fpga
+
+make automata
+make xclbin
 make jni
 ```
 
-This produces `fpga/librelev_jni.so`. Pass its absolute path and the compiled
-FPGA image to AutoFFinder:
+The relevant outputs are:
+
+- `fpga/automata.hw.xo`: compiled kernel object;
+- `fpga/automata.hw.xclbin`: U280 FPGA image containing the counter reset; and
+- `fpga/librelev_jni.so`: native bridge loaded by Java.
+
+`make jni` alone does not rebuild the FPGA image.
+
+## Fixed search configuration
+
+The current FPGA design and JNI adapter have the following fixed constraints:
+
+- exactly 128 guide records are required;
+- edit-distance thresholds are limited to 0 through 6;
+- only the first 20 symbols of each guide line are read by ReLev;
+- ReLev appends the fixed suffix `TGG` to each 20-symbol guide; and
+- the JNI library and `.xclbin` paths supplied to Java must be absolute.
+
+Supporting fewer guide lanes, another PAM encoding, or a different FPGA device
+requires corresponding ReLev host/kernel changes and a new bitstream.
+
+## Run from AutoFFinder
+
+Pass the rebuilt JNI library and FPGA image to AutoFFinder:
 
 ```bash
 java \
@@ -62,9 +121,20 @@ java \
   6 6 4 2 32 false 50 NGG false unused
 ```
 
-The current FPGA image requires exactly 128 guides and supports edit-distance
-thresholds from 0 through 6. AutoFFinder splits the supplied FASTA and invokes
-the JNI host once for each forward and reverse-complement chromosome file.
+AutoFFinder splits the supplied FASTA and invokes the JNI host once for each
+forward and reverse-complement chromosome file. No intermediate candidate file
+is required in this mode.
+
+## Current limitations
+
+- The FPGA output allocation is derived from the chromosome input size. The
+  kernel does not currently expose an explicit output-capacity guard, so an
+  unusually dense match set can exceed that allocation.
+- ReLev processes the zero padding added to align an input to the 64-byte
+  transfer size. Candidate positions produced only from that trailing padding
+  are not currently filtered by the JNI adapter.
+- The JNI/FPGA path must be validated on the target U280 system; it cannot be
+  exercised on a CPU-only machine.
 
 # For additional debugging and development
 
