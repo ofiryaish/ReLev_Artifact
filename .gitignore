@@ -1,0 +1,5 @@
+fpga/*.xclbin
+fpga/*.xo
+fpga/librelev_jni.so
+fpga/all_builds/
+fpga/all_logs/

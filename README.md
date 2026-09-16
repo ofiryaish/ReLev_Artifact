@@ -50,9 +50,9 @@ files are U280-specific:
 - `fpga/HBM_connectivity.cfg` connects the input and output ports to U280 HBM
   banks.
 
-The checked-in `automata.hw.xclbin` predates the repeated-invocation counter
-reset on this branch and must not be used for the JNI pipeline. Rebuild the
-kernel and bitstream from source.
+No prebuilt `.xclbin` is included on this branch. The kernel and bitstream must
+be built from source so that they contain the repeated-invocation reset and
+NGG wildcard support required by the JNI pipeline.
 
 Even another U280 installation may expose its platform under a different
 `.xpfm` path. Override `DEVICE` with the platform reported by `platforminfo`,
@@ -104,6 +104,11 @@ The current FPGA design and JNI adapter have the following fixed constraints:
 - ReLev appends `NGG` to each 20-symbol guide, with `N` matched as a wildcard
   by the FPGA automaton; and
 - the JNI library and `.xclbin` paths supplied to Java must be absolute.
+
+The PAM wildcard matches `A`, `C`, `G`, or `T`. An `N` in the reference genome
+does not satisfy the wildcard. In the current automaton, a reference `N` also
+does not activate a mismatch transition; it interrupts the active match path
+rather than consuming one edit.
 
 Supporting fewer guide lanes, another PAM, or a different FPGA device requires
 corresponding ReLev host/kernel changes and a new bitstream.
