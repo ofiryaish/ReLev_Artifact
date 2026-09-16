@@ -59,7 +59,7 @@ java \
   -Drelev.nativeLibrary=/absolute/path/to/librelev_jni.so \
   -cp bin PostAutoFFinder.AutoOffTargetSearchAlign \
   genome.fa guides.txt results/run \
-  6 6 4 1 32 false 50 NGG false unused
+  6 6 4 2 32 false 50 NGG false unused
 ```
 
 The current FPGA image requires exactly 128 guides and supports edit-distance
