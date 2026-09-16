@@ -9,6 +9,7 @@ XCLBIN := automata.$(TARGET).xclbin
 
 # host target
 HOST_EXE := host.exe
+JNI_LIB := librelev_jni.so
 
 # config files target
 EMCONFIG_FILE := emconfig.json
@@ -26,16 +27,17 @@ LFLAGS := -L$(XILINX_XRT)/lib -lOpenCL -lxrt_coreutil -lrt -luuid
 CMD_ARGS:= automata.${TARGET}.xclbin ../input/chr1.txt ../patterns/128guides.txt 0
 
 # primary build targets
-.PHONY: automata xclbin host all 
+.PHONY: automata xclbin host jni all
 
 automata: $(AUTOMATA_XO)
 xclbin:  $(XCLBIN)
 host: $(HOST_EXE) 
+jni: $(JNI_LIB)
 
 all: xclbin host 
 
 clean:
-	-$(RM) $(EMCONFIG_FILE) $(HOST_EXE) $(XCLBIN) 
+	-$(RM) $(EMCONFIG_FILE) $(HOST_EXE) $(JNI_LIB) $(XCLBIN)
 
 cleanall: clean	
 	rm -rf all_* *.log *.xclbin *.compile_summary *.link_summary *.info *.xo *.hw.* *.hw_emu.*
@@ -52,6 +54,11 @@ $(XCLBIN): #$(AUTOMATA_XO)
 $(HOST_EXE): ./host/host.cpp ./host/util.cpp
 	g++ $(CFLAGS) -o $@ $+ $(LFLAGS)
 	@echo 'Compiled Host Executable: $(HOST_EXE)'
+
+$(JNI_LIB): ./host/relev_jni.cpp ./host/util.cpp
+	@test -n "$(JAVA_HOME)" || (echo "JAVA_HOME must point to a JDK to build $(JNI_LIB)" >&2; exit 1)
+	g++ $(CFLAGS) -fPIC -shared -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux -o $@ $+ $(LFLAGS)
+	@echo 'Compiled JNI Library: $(JNI_LIB)'
 
 $(EMCONFIG_FILE):
 	$(EMCONFIGUTIL) --nd 1 --od . --platform $(DEVICE)

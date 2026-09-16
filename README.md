@@ -32,6 +32,40 @@ All experiments were performed on a Linux workstation with the following configu
 5. Compile the host executable - `make host`
 6. Run the reproducibility script - `cd scripts; ./relev_experiments.sh`
 
+# AutoFFinder JNI Integration
+
+The `autoffinder-jni-integration` branch includes a JNI host interface for
+running ReLev directly from AutoFFinder's Java post-processing stage. It also
+resets the kernel's persistent position and configuration counters at the
+start of every invocation, allowing one loaded system to process successive
+chromosome and strand files.
+
+Build the shared library after configuring the XRT, Vitis, and Java
+environments:
+
+```bash
+export JAVA_HOME=/path/to/jdk
+cd fpga
+make jni
+```
+
+This produces `fpga/librelev_jni.so`. Pass its absolute path and the compiled
+FPGA image to AutoFFinder:
+
+```bash
+java \
+  -Dautoffinder.candidateSource=fpga \
+  -Drelev.xclbin=/absolute/path/to/automata.hw.xclbin \
+  -Drelev.nativeLibrary=/absolute/path/to/librelev_jni.so \
+  -cp bin PostAutoFFinder.AutoOffTargetSearchAlign \
+  genome.fa guides.txt results/run \
+  6 6 4 1 32 false 50 NGG false unused
+```
+
+The current FPGA image requires exactly 128 guides and supports edit-distance
+thresholds from 0 through 6. AutoFFinder splits the supplied FASTA and invokes
+the JNI host once for each forward and reverse-complement chromosome file.
+
 # For additional debugging and development
 
 The project is broken up in several key components:

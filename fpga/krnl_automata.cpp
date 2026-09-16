@@ -70,6 +70,10 @@ static void mark_input_packets(hls::stream<InputPacket> &inStream, hls::stream<I
     static UBYTE ragg_id = 0;
     static UBYTE pattern_id = 0;
 
+    packetcounter = 0;
+    ragg_id = 0;
+    pattern_id = 0;
+
     while (1)
     {
 #pragma HLS pipeline II = 1
@@ -154,6 +158,9 @@ void compute_automata(hls::stream<InputPacket> &inStream, hls::stream<Match> &ou
 
     static automata_0 automata0[RAGG_SIZE] = {};
 #pragma HLS array_partition variable = automata0 type = complete
+
+    packetcounter = 0;
+    counter = 0;
 
     while (1)
     {
